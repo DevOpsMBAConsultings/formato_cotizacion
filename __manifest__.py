@@ -1,7 +1,7 @@
 {
-    'name': 'Formato Cotizacion Truck Solution GP',
+    'name': 'Formato Cotizacion Suplidora JC',
     'version': '1.0',
-    'summary': 'Custom Sale Order Report for Truck Solution',
+    'summary': 'Custom Sale Order Report for Suplidora JC',
     'description': 'Replicates the design of _COT 285 PETROLEOS DELTA.pdf for Sale Orders.',
     'category': 'Sales',
     'author': 'Antigravity',
