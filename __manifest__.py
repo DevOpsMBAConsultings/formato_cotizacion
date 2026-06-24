@@ -1,5 +1,5 @@
 {
-    'name': 'Formato Cotizacion Suplidora JC',
+    'name': 'Formato Cotizacion',
     'version': '19.0.1.0.0',
     'license': 'LGPL-3',
     'summary': 'Custom Sale Order Report for Suplidora JC',
