@@ -93,10 +93,7 @@
                     <p t-field="doc.note"/>
                 </div>
 
-                <div class="mt-5" style="page-break-inside: avoid;">
-                    <span style="font-size: 9pt;">Aceptación por escrito, sello de la empresa, fecha y firma</span>
-                    <div style="border: 1px solid black; height: 100px; width: 350px; margin-top: 5px;"></div>
-                </div>
+
             </div>
         </xpath>
     </template>
