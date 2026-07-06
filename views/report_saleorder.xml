@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="report_saleorder_document_inherit_suplidora_jc" inherit_id="sale.report_saleorder_document" priority="30">
+    <template id="report_saleorder_document_inherit_base" inherit_id="sale.report_saleorder_document" priority="30">
         
         <xpath expr="//*[contains(@t-call, 'layout')]" position="attributes">
             <attribute name="t-call">web.basic_layout</attribute>
@@ -15,7 +15,7 @@
                 
                 <div class="row mb-3">
                     <div class="col-6">
-                        <img src="/formato_cotizacion_suplidora_jc/static/src/img/logo.jpg" style="max-height: 90px; width: auto; display: block;"/>
+                        <img src="/formato_cotizacion/static/src/img/logo.png" style="max-height: 90px; width: auto; display: block;"/>
                         <div class="mt-2">
                             <strong style="font-size: 14pt;"><span t-field="res_company.name"/></strong><br/>
                             <span t-field="res_company.street"/><br/>
