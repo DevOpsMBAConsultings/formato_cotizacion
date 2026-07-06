@@ -8,7 +8,7 @@
     'author': 'Antigravity',
     'depends': ['sale'],
     'data': [
-        'views/report_saleorder.xml',
+        'report/report_saleorder.xml',
     ],
     'installable': True,
     'application': False,
