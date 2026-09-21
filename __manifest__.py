@@ -1,11 +1,10 @@
 {
-    'name': 'Formato Cotizacion',
+    'name': 'Formato Cotización Estilizado',
     'version': '19.0.1.0.0',
     'license': 'LGPL-3',
-    'summary': 'Custom Sale Order Report for Suplidora JC',
-    'description': 'Base quote format for Sale Orders.',
+    'summary': 'Formato profesional y estilizado de cotización',
     'category': 'Sales',
-    'author': 'Antigravity',
+    'author': 'MBA Consultings',
     'depends': ['sale'],
     'data': [
         'report/report_saleorder.xml',
