@@ -31,6 +31,8 @@
         
         <xpath expr="//div[hasclass('page')]" position="replace">
             <div class="page" style="font-family: Arial, sans-serif; font-size: 9pt; color: #222; padding: 0px 10px;">
+                <t t-set="brand_primary" t-value="doc.company_id.primary_color or '#0e4422'"/>
+                <t t-set="brand_accent" t-value="doc.company_id.secondary_color or '#f15a24'"/>
                 
                 <!-- Encabezado con Fallback de Logo -->
                 <div class="row mb-3">
@@ -54,8 +56,8 @@
                 <!-- Datos del Cliente y de la Cotización -->
                 <div class="row mb-3">
                     <div class="col-6">
-                        <strong style="display: block; margin-bottom: 2px;">Cliente</strong>
-                        <hr style="border-top: 2px solid #0e4422; margin-top: 0px; margin-bottom: 8px; opacity: 1;"/>
+                        <strong t-attf-style="display: block; margin-bottom: 2px; color: #{brand_primary};">Cliente</strong>
+                        <hr t-attf-style="border-top: 2px solid #{brand_primary}; margin-top: 0px; margin-bottom: 8px; opacity: 1;"/>
                         
                         <t t-if="doc.partner_id.parent_id">
                             <strong>Empresa:</strong> <span t-field="doc.partner_id.parent_id.name"/><br/>
@@ -74,8 +76,8 @@
                     </div>
                     
                     <div class="col-5 offset-1">
-                        <strong style="display: block; margin-bottom: 2px;">Cotización</strong>
-                        <hr style="border-top: 2px solid #0e4422; margin-top: 0px; margin-bottom: 8px; opacity: 1;"/>
+                        <strong t-attf-style="display: block; margin-bottom: 2px; color: #{brand_primary};">Cotización</strong>
+                        <hr t-attf-style="border-top: 2px solid #{brand_primary}; margin-top: 0px; margin-bottom: 8px; opacity: 1;"/>
                         <strong>Número:</strong> <span t-field="doc.name"/><br/>
                         <strong>Fecha:</strong> <span t-field="doc.date_order" t-options='{"widget": "date"}'/><br/>
                         <strong t-if="doc.validity_date">Válida hasta:</strong> <span t-field="doc.validity_date" t-if="doc.validity_date"/><br t-if="doc.validity_date"/>
@@ -90,7 +92,7 @@
                 <!-- Tabla de Líneas con Imagen, Ref, Descripción y Precios -->
                 <table class="table table-sm mt-2" style="width: 100%; border-collapse: collapse; font-size: 9pt;">
                     <thead>
-                        <tr style="background-color: #0e4422; color: white !important; font-weight: bold; border-bottom: 2px solid #f15a24;">
+                        <tr t-attf-style="background-color: #{brand_primary}; color: white !important; font-weight: bold; border-bottom: 2px solid #{brand_accent};">
                             <th class="text-center" style="padding: 6px; color: white !important; width: 55px;">Foto</th>
                             <th class="text-start" style="padding: 6px; color: white !important; width: 100px;">Código</th>
                             <th class="text-start" style="padding: 6px; color: white !important;">Descripción</th>
@@ -145,7 +147,7 @@
                                 <td class="text-start" style="padding: 4px;"><strong>Impuestos</strong></td>
                                 <td class="text-end" style="padding: 4px;"><span t-field="doc.amount_tax" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
                             </tr>
-                            <tr style="background-color: #0e4422; color: white; font-weight: bold; border-top: 2px solid #f15a24;">
+                            <tr t-attf-style="background-color: #{brand_primary}; color: white; font-weight: bold; border-top: 2px solid #{brand_accent};">
                                 <td class="text-start" style="padding: 6px 8px; color: white !important;">TOTAL</td>
                                 <td class="text-end" style="padding: 6px 8px; color: white !important;"><span t-field="doc.amount_total" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
                             </tr>
