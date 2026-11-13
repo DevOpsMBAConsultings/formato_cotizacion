@@ -17,7 +17,7 @@
 
     <!-- Asignar el Formato de Papel al reporte de Ventas -->
     <record id="sale.action_report_saleorder" model="ir.actions.report">
-        <field name="paperformat_id" ref="formato_cotizacion.paperformat_cotizacion"/>
+        <field name="paperformat_id" ref="mba_formato_cotizacion.paperformat_cotizacion"/>
     </record>
 
     <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document" priority="30">
@@ -31,6 +31,15 @@
         
         <xpath expr="//div[hasclass('page')]" position="replace">
             <div class="page" style="font-family: Arial, sans-serif; font-size: 9pt; color: #222; padding: 0px 10px;">
+                <style>
+                    .terms-note p {
+                        margin-bottom: 3px !important;
+                        line-height: 1.25 !important;
+                    }
+                    .terms-note p:last-child {
+                        margin-bottom: 0 !important;
+                    }
+                </style>
                 <t t-set="brand_primary" t-value="doc.company_id.primary_color or '#0e4422'"/>
                 <t t-set="brand_accent" t-value="doc.company_id.secondary_color or '#f15a24'"/>
                 
@@ -41,7 +50,7 @@
                             <img t-att-src="image_data_uri(doc.company_id.logo)" style="max-height: 90px; max-width: 280px; width: auto; display: block;" alt="Logo"/>
                         </t>
                         <t t-else="">
-                            <img src="/formato_cotizacion/static/src/img/logo.png" style="max-height: 90px; max-width: 280px; width: auto; display: block;" alt="Logo"/>
+                            <img src="/mba_formato_cotizacion/static/src/img/logo.png" style="max-height: 90px; max-width: 280px; width: auto; display: block;" alt="Logo"/>
                         </t>
                     </div>
                     <div class="col-6 text-end" style="color: #555;">
@@ -91,7 +100,7 @@
 
                 <!-- Tabla de Líneas con Imagen, Ref, Descripción y Precios -->
                 <table class="table table-sm mt-2" style="width: 100%; border-collapse: collapse; font-size: 9pt;">
-                    <thead>
+                    <thead style="display: table-header-group;">
                         <tr t-attf-style="background-color: #{brand_primary}; color: white !important; font-weight: bold; border-bottom: 2px solid #{brand_accent};">
                             <th class="text-center" style="padding: 6px; color: white !important; width: 55px;">Foto</th>
                             <th class="text-start" style="padding: 6px; color: white !important; width: 100px;">Código</th>
@@ -115,12 +124,12 @@
                                 <td class="text-end align-middle" style="padding: 5px;"><span t-field="line.price_unit" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
                                 <td class="text-end align-middle" style="padding: 5px;"><span t-field="line.price_subtotal" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
                             </tr>
-                            <tr t-elif="line.display_type == 'line_section'" style="background-color: #f1f3f5; font-weight: bold;">
+                            <tr t-elif="line.display_type == 'line_section'" style="background-color: #f1f3f5; font-weight: bold; page-break-inside: avoid;">
                                 <td colspan="6" class="text-start" style="padding: 6px 8px;">
                                     <span t-field="line.name"/>
                                 </td>
                             </tr>
-                            <tr t-elif="line.display_type == 'line_note'">
+                            <tr t-elif="line.display_type == 'line_note'" style="page-break-inside: avoid;">
                                 <td colspan="6" class="text-start" style="padding: 4px 8px; font-style: italic; color: #555;">
                                     <span t-field="line.name"/>
                                 </td>
@@ -134,7 +143,7 @@
                     <div class="col-7">
                         <div t-if="doc.note">
                             <strong style="display: block; margin-bottom: 2px;">Términos y condiciones:</strong>
-                            <span t-field="doc.note" style="color: #444;"/>
+                            <div class="terms-note" t-field="doc.note" style="color: #444;"/>
                         </div>
                     </div>
                     <div class="col-5">
